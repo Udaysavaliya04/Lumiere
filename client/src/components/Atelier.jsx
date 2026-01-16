@@ -1,4 +1,4 @@
-import { useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 export default function Atelier() {

@@ -20,7 +20,8 @@ export default function ProductCard({ product }) {
       className="group relative bg-transparent"
     >
       <Link to={`/product/${product._id}`} className="block overflow-hidden relative aspect-[4/5] overflow-hidden">
-        <img 
+        <motion.img 
+          layoutId={`product-image-${product._id}`}
           src={product.image} 
           alt={product.name} 
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out"
@@ -38,9 +39,9 @@ export default function ProductCard({ product }) {
       </Link>
       
       <div className="pt-6 text-center space-y-2">
-        <p className="text-[10px] text-gold-600 uppercase tracking-[0.2em]">{product.category}</p>
+        <p className="text-[10px] text-gold-500 uppercase tracking-[0.2em]">{product.category}</p>
         <Link to={`/product/${product._id}`}>
-            <h3 className="text-xl font-serif text-midnight-900 font-medium group-hover:text-gold-600 transition-colors">{product.name}</h3>
+            <h3 className="text-xl font-serif text-white font-medium group-hover:text-gold-400 transition-colors">{product.name}</h3>
         </Link>
         <p className="text-gray-500 text-sm font-light tracking-wide">${product.price.toFixed(2)}</p>
       </div>

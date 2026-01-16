@@ -1,37 +1,42 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@200;300;400;500;600&display=swap");
 
 @theme {
-  --color-gold-100: #F9F1D8;
-  --color-gold-200: #F0DEAA;
-  --color-gold-300: #E6C875;
-  --color-gold-400: #DDB345;
-  --color-gold-500: #D4AF37; /* Primary Gold */
-  --color-gold-600: #AA8C2C;
+  --color-gold-100: #f9f1d8;
+  --color-gold-200: #f0deaa;
+  --color-gold-300: #e6c875;
+  --color-gold-400: #ddb345;
+  --color-gold-500: #d4af37;
+  --color-gold-600: #aa8c2c;
   --color-gold-700: #806921;
   --color-gold-800: #554616;
-  --color-gold-900: #2B230B;
+  --color-gold-900: #2b230b;
 
-  --color-midnight-50: #EAEAEC;
-  --color-midnight-100: #CDCDD2;
-  --color-midnight-200: #A6A6AF;
-  --color-midnight-300: #7F7F8C;
+  --color-midnight-50: #eaeaec;
+  --color-midnight-100: #cdcdd2;
+  --color-midnight-200: #a6a6af;
+  --color-midnight-300: #7f7f8c;
   --color-midnight-400: #585869;
   --color-midnight-500: #313146;
   --color-midnight-600: #272738;
-  --color-midnight-700: #1D1D2A;
-  --color-midnight-800: #13131C;
-  --color-midnight-900: #0a0a0a; /* Deepest Black */
+  --color-midnight-700: #1d1d2a;
+  --color-midnight-800: #13131c;
+  --color-midnight-900: #0a0a0a;
   --color-midnight-950: #050510;
 
-  --color-cream-50: #FAFAFA; /* Off-white background */
-  --color-cream-100: #F5F5F5;
-  --color-cream-200: #EEEEEE;
-  
+  --color-cream-50: #fafafa;
+  --color-cream-100: #f5f5f5;
+  --color-cream-200: #eeeeee;
+
   --font-serif: "Playfair Display", serif;
   --font-sans: "Montserrat", sans-serif;
-  
-  --background-image-luxury-gradient: linear-gradient(to right, #0F0F1A, #1A1A2E);
+
+  --background-image-luxury-gradient: linear-gradient(
+    to right,
+    #0f0f1a,
+    #1a1a2e
+  );
 }
 
 body {
@@ -40,17 +45,25 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none; /* Hide default cursor for custom cursor */
+  cursor: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
 }
 
-/* Luxury Text Shimmer Animation */
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .animate-shimmer {
@@ -58,14 +71,30 @@ h1, h2, h3, h4, h5, h6 {
   animation: shimmer 4s linear infinite;
 }
 
-/* High-Gloss Selection */
 ::selection {
-    background: var(--color-gold-400);
-    color: var(--color-midnight-950);
-    text-shadow: none;
+  background: var(--color-gold-400);
+  color: var(--color-midnight-950);
+  text-shadow: none;
 }
 
-/* Smooth Scrolling */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+/* Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-midnight-950);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-400);
 }

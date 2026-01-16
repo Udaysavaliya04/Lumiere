@@ -4,10 +4,22 @@ import { motion } from 'framer-motion';
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const updateMousePosition = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
+      
+      // Check if near right scrollbar (within 20px of edge) or leaving window
+      const isOnScrollbar = e.clientX > window.innerWidth - 20;
+      
+      if (isOnScrollbar) {
+          document.body.style.cursor = 'auto';
+          setIsVisible(false);
+      } else {
+          document.body.style.cursor = 'none';
+          setIsVisible(true);
+      }
     };
 
     const handleMouseEnter = () => setIsHovered(true);
@@ -24,6 +36,7 @@ export default function CustomCursor() {
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
+      document.body.style.cursor = 'auto'; // Cleanup
       interactiveElements.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnter);
         el.removeEventListener('mouseleave', handleMouseLeave);
@@ -37,7 +50,8 @@ export default function CustomCursor() {
       animate={{
         x: mousePosition.x - 16,
         y: mousePosition.y - 16,
-        scale: isHovered ? 2.5 : 1,
+        scale: isVisible ? (isHovered ? 2.5 : 1) : 0,
+        opacity: isVisible ? 1 : 0,
         backgroundColor: isHovered ? "#ffffff" : "transparent"
       }}
       transition={{

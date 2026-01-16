@@ -4,6 +4,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Minus, Plus, ShoppingBag, Truck, Shield } from 'lucide-react';
 import CartContext from '../context/CartContext';
+import DigitalLoupe from '../components/DigitalLoupe';
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -42,25 +43,23 @@ export default function ProductPage() {
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        {/* Left: Image (Sticky) */}
-        <div className="relative h-[60vh] lg:h-screen lg:sticky lg:top-0 bg-midnight-900 overflow-hidden">
-             <motion.img 
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                src={product.image} 
-                alt={product.name} 
-                className="absolute inset-0 w-full h-full object-cover opacity-90"
-             />
+        {/* Left: Image (Sticky) - Using DigitalLoupe */}
+        <DigitalLoupe 
+             src={product.image} 
+             alt={product.name}
+             layoutId={`product-image-${product._id || id}`}
+             className="h-[60vh] lg:h-screen lg:sticky lg:top-0 bg-midnight-900" 
+             imgClassName="opacity-90"
+        >
              <div className="absolute inset-0 bg-gradient-to-t from-midnight-950/80 to-transparent pointer-events-none" />
-        </div>
+        </DigitalLoupe>
 
         {/* Right: Details (Scrollable) */}
         <div className="flex flex-col justify-center px-6 lg:px-24 py-20 lg:py-0 bg-midnight-950 text-white">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
             >
                 <div className="flex items-center gap-4 mb-6">
                     <span className="h-[1px] w-12 bg-gold-500/50" />
